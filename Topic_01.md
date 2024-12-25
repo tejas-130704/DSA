@@ -140,22 +140,22 @@ Represents both upper and lower bounds, describing the average-case growth rate.
 ### **Why Ignore Constants and Lower-order Terms?**
 
 - **Constants**: Dependent on machine speed, compiler optimizations, or implementation details, which are not relevant to algorithm scalability.
-  - Example: Sorting \( 1{,}000{,}000 \) numbers:
-    - Algorithm A: \( 2n \) operations → \( 2 \cdot 1{,}000{,}000 = 2{,}000{,}000 \)
-    - Algorithm B: \( 100n \) operations → \( 100 \cdot 1{,}000{,}000 = 100{,}000{,}000 \)
-    - Both are \( O(n) \), but Algorithm A is faster in practice.
+  - Example: Sorting 1,000,000 numbers:
+    - Algorithm A: 2n operations → 2 * 1,000,000 = 2,000,000
+    - Algorithm B: 100n operations → 100 * 1,000,000 = 100,000,000
+    - Both are O(n), but Algorithm A is faster in practice.
 
-- **Lower-order Terms**: Become negligible as \( n \) grows.
-  - Example: \( n^2 + n \approx n^2 \) for large \( n \).
+- **Lower-order Terms**: Become negligible as 'n' grows.
+  - Example: n^2 + n ~= n^2  for large 'n'.
 
 ---
 
 ### **Real-world Analogy**
 
 Consider traveling by car from one city to another:
-- **Big-O (\( O \))**: Worst-case time to reach your destination (e.g., if there's heavy traffic).
-- **Omega (\( \Omega \))**: Best-case time (e.g., if there’s no traffic).
-- **Theta (\( \Theta \))**: Average-case time (e.g., under typical traffic conditions).
+- **Big-O (O)**: Worst-case time to reach your destination (e.g., if there's heavy traffic).
+- **Omega ()**: Best-case time (e.g., if there’s no traffic).
+- **Theta (ɵ)**: Average-case time (e.g., under typical traffic conditions).
 
 If someone asks, "How long will it take?" you're more concerned about the worst-case time rather than exact minute-by-minute delays.
 
@@ -178,8 +178,8 @@ There are several techniques to determine the time complexity of an algorithm. E
 ### **1. Counting Basic Operations**
 
 #### **Description**:
-- Count the number of basic operations (e.g., comparisons, additions, multiplications) performed as a function of input size \( n \).
-- Add up all operations and express it in terms of \( n \).
+- Count the number of basic operations (e.g., comparisons, additions, multiplications) performed as a function of input size 'n'.
+- Add up all operations and express it in terms of 'n'.
 
 #### **Example**: Sum of an array
 ```python
@@ -191,9 +191,9 @@ def sum_array(arr):
 ```
 
 **Analysis**:
-- The loop runs \( n \) times, and there is one addition per iteration.
-- Total basic operations = \( n \).
-- **Time Complexity**: \( O(n) \).
+- The loop runs 'n' times, and there is one addition per iteration.
+- Total basic operations = 'n'.
+- **Time Complexity**: O(n).
 
 ---
 
@@ -214,15 +214,7 @@ def merge_sort(arr):
     return merge(left, right)
 ```
 
-**Recurrence Relation**:
-\[
-T(n) = 2T\left(\frac{n}{2}\right) + O(n)
-\]
-
-Using the Master Theorem:
-- \( a = 2 \), \( b = 2 \), \( f(n) = O(n) \).
-- \( \log_b a = \log_2 2 = 1 \), and \( f(n) = n^{\log_b a} \).
-- Time Complexity = \( O(n \log n) \).
+![alt text](<Screenshot 2024-12-25 141510.png>)
 
 ---
 
@@ -239,11 +231,7 @@ def nested_loops(n):
             print(i, j)  # Work per iteration is constant
 ```
 
-**Analysis**:
-- The outer loop runs \( n \) times.
-- The inner loop runs \( 0, 1, 2, \dots, (n-1) \) times.
-- Total iterations: \( \sum_{i=0}^{n-1} i = \frac{n(n-1)}{2} = O(n^2) \).
-- **Time Complexity**: \( O(n^2) \).
+![alt text](<Screenshot 2024-12-25 141727.png>)
 
 ---
 
@@ -261,9 +249,9 @@ for i in range(n):
 ```
 
 **Analysis**:
-- Resizing occurs when the array is full, costing \( O(n) \) to copy all elements.
-- The total cost of \( n \) insertions is \( O(n) \).
-- **Amortized Time Complexity**: \( O(1) \) per insertion.
+- Resizing occurs when the array is full, costing O(n) to copy all elements.
+- The total cost of  'n'  insertions is O(n).
+- **Amortized Time Complexity**: O(1) per insertion.
 
 ---
 
@@ -289,19 +277,17 @@ def binary_search(arr, target):
 
 **Analysis**:
 - The search space halves with each iteration.
-- Total iterations = \( \log_2 n \).
-- **Time Complexity**: \( O(\log n) \).
+- Total iterations = log_2 n.
+- **Time Complexity**: O(log n).
 
 ---
 
 ### **6. Using Master Theorem**
 
 #### **Description**:
-- Used for divide-and-conquer algorithms with recurrence relations of the form:
-\[
-T(n) = aT\left(\frac{n}{b}\right) + O(n^d)
-\]
-- Analyze based on the relationship between \( \log_b a \) and \( d \).
+
+![alt text](<Screenshot 2024-12-25 141942.png>)
+
 
 #### **Example**: Quick Sort
 ```python
@@ -314,11 +300,7 @@ def quick_sort(arr):
     return quick_sort(less) + [pivot] + quick_sort(greater)
 ```
 
-**Recurrence Relation**:
-\[
-T(n) = 2T\left(\frac{n}{2}\right) + O(n)
-\]
-- Using Master Theorem: Time Complexity = \( O(n \log n) \).
+![alt text](<Screenshot 2024-12-25 141953.png>)
 
 ---
 
@@ -341,7 +323,7 @@ print("Time taken:", end - start)
 ```
 
 **Analysis**:
-- Experimentally measure the time and fit to \( O(n \log n) \).
+- Experimentally measure the time and fit to O(n log n).
 
 ---
 
