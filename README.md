@@ -1,5 +1,7 @@
 # DSA
 
+![DSA](Data-structure-algorithm.png)
+
 ## Table of Contents
 
 1. [Introduction to Data Structures and Algorithms](#introduction-to-data-structures-and-algorithms)
